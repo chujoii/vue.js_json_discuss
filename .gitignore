@@ -1,0 +1,6 @@
+.*
+~*
+*tmp*
+vue.js
+!.gitignore
+!*.example

@@ -1,0 +1,27 @@
+README.org --- description
+
+* License
+The MIT License (MIT)
+
+Copyright (c) 2020-present Roman V. Prikhodchenko <chujoii@gmail.com>
+
+This file is part of vue.js_json_discuss.
+  
+* Keywords:
+JSON discussion registry Vue.js JavaScript
+
+* Description:
+Single-page application writen with Vue.js
+
+* Usage:
+View in browser with JavaScript support.
+
+* History:
+Initial project version began about 2020-05(Apr)-05
+
+* Dependences:
+** [[https://vuejs.org][Vue.js]] JavaScript framework
+[[https://vuejs.org/js/vue.js][development version]] or [[https://vuejs.org/js/vue.min.js][production version]]
+
+* TODO list:
+

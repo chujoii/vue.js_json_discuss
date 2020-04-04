@@ -1,0 +1,9 @@
+#drop_zone {
+	width:  200px;
+	height: 100px;
+	outline: dashed;
+	transition: outline 0.6s linear;
+	margin: 0.5em; /* Increased margin since the outline expands outside the element */
+}
+
+#drop_zone:hover { outline-width: 10px; }
