@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo please wait ...
+echo please wait ~ 7 minutes
 
 rm -f test_parser.json test_render.json
 

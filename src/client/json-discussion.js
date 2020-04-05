@@ -22,13 +22,14 @@ function dropHandler(ev) {
 					appul.seen_dz = false;
 					appul.seen_ul = true;
 					appul.file_name = file.name;
+					console.log("ready for render");
 				}
 			}
 		}
 	} else {
 		// Use DataTransfer interface to access the file(s)
 		for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-			console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+			//console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
 		}
 	}
 }
@@ -50,9 +51,11 @@ const regex_name = /"user"\s*:\s*"([^"]+)/gi;
 function parse_name (input_string) {
 	let db = [];
 	let match;
+	console.log("parse start");
 	while ((match = regex_name.exec(input_string)) !== null) {
 		db.push(match[1]);
-		console.log('found:' + match[1]);
+		//console.log('found:' + match[1]);
 	}
+	console.log("parse finish");
 	return db.filter( onlyUnique );
 }
