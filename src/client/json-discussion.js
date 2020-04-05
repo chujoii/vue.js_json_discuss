@@ -21,7 +21,7 @@ function dropHandler(ev) {
 					appul.db.sort();
 					appul.seen_dz = false;
 					appul.seen_ul = true;
-
+					appul.file_name = file.name;
 				}
 			}
 		}

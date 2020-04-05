@@ -3,6 +3,7 @@
 var appul = new Vue({
 	el: '#app-ul',
 	data: {
+		filename: '',
 		seen_dz: true,
 		seen_ul: false,
 		db: []
