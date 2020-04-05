@@ -17,7 +17,10 @@ function dropHandler(ev) {
 				var read = new FileReader();
 				read.readAsText(file);
 				read.onloadend = function(){
-					parse_name(read.result);
+					appul.db = parse_name(read.result);
+					appul.seen_dz = false;
+					appul.seen_ul = true;
+
 				}
 			}
 		}
@@ -40,8 +43,11 @@ function dragOverHandler(ev) {
 const regex_name = /"user"\s*:\s*"([^"]+)/gi;
 
 function parse_name (input_string) {
+	let db = [];
 	let match;
 	while ((match = regex_name.exec(input_string)) !== null) {
+		db.push(match[1]);
 		console.log('found:' + match[1]);
 	}
+	return db;
 }

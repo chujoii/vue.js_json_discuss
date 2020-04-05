@@ -5,14 +5,20 @@
 		<script type="application/javascript" src="vue.js"></script>
 		<!-- defer: script is executed when the page has finished parsing -->
 		<script type="application/javascript" src="json-discussion.js" defer></script>
+		<script type="application/javascript" src="app-ul.js" defer></script>
 		<link rel="stylesheet" type="text/css" href="json-discussion.css">
 	</head>
 	<body>
-		<div id="drop_zone"
-		     ondrop="dropHandler(event);"
-		     ondragover="dragOverHandler(event);"
-		     >
-			<p>Drag file this Drop Zone</p>
+
+		<div id="app-ul">
+			<div id="drop_zone"
+			     ondrop="dropHandler(event);"
+			     ondragover="dragOverHandler(event);"
+			     v-if="seen_dz"
+			     >
+				<p>Drag file this Drop Zone</p>
+			</div>
+			<span v-if="seen_ul">{{ db }}</span>
 		</div>
 	</body>
 </html>
