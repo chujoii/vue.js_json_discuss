@@ -16,9 +16,16 @@
 			     ondragover="dragOverHandler(event);"
 			     v-if="seen_dz"
 			     >
-				<p>Drag file this Drop Zone</p>
+				<p>Drag file to this Drop Zone</p>
 			</div>
-			<span v-if="seen_ul">{{ db }}</span>
+
+			<div v-if="seen_ul">
+				<ul>
+					<li v-for="item in db">
+						{{ item }}
+					</li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
