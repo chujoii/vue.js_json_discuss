@@ -6,5 +6,10 @@ var appul = new Vue({
 		seen_dz: true,
 		seen_ul: false,
 		db: []
+	},
+	methods: {
+		delete_user: function (index) {
+			this.db.splice(index, 1);
+		}
 	}
 })

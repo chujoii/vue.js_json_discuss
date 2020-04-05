@@ -21,8 +21,9 @@
 
 			<div v-if="seen_ul">
 				<ul>
-					<li v-for="item in db">
+					<li v-for="(item, index) in db">
 						{{ item }}
+						<button v-on:click="delete_user(index)">x</button>
 					</li>
 				</ul>
 			</div>
