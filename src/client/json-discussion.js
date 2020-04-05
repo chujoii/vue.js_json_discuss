@@ -18,6 +18,7 @@ function dropHandler(ev) {
 				read.readAsText(file);
 				read.onloadend = function(){
 					appul.db = parse_name(read.result);
+					appul.db.sort();
 					appul.seen_dz = false;
 					appul.seen_ul = true;
 
@@ -40,6 +41,10 @@ function dragOverHandler(ev) {
 	ev.preventDefault();
 }
 
+function onlyUnique(value, index, self) {
+	return self.indexOf(value) === index;
+}
+
 const regex_name = /"user"\s*:\s*"([^"]+)/gi;
 
 function parse_name (input_string) {
@@ -49,5 +54,5 @@ function parse_name (input_string) {
 		db.push(match[1]);
 		console.log('found:' + match[1]);
 	}
-	return db;
+	return db.filter( onlyUnique );
 }
