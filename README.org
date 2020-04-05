@@ -11,7 +11,8 @@ This file is part of vue.js_json_discuss.
 JSON discussion registry Vue.js JavaScript
 
 * Description:
-Single-page application writen with Vue.js
+Single-page application writen with Vue.js for demonstrate parsing
+dropped JSON files
 
 * Usage:
 View in browser with JavaScript support.
