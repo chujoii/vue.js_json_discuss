@@ -17,8 +17,7 @@ function dropHandler(ev) {
 				var read = new FileReader();
 				read.readAsText(file);
 				read.onloadend = function(){
-					var json_obj = JSON.parse(read.result);
-					console.log(json_obj);
+					parse_name(read.result);
 				}
 			}
 		}
@@ -36,4 +35,13 @@ function dragOverHandler(ev) {
 
 	// Prevent default behavior (Prevent file from being opened)
 	ev.preventDefault();
+}
+
+const regex_name = /"user"\s*:\s*"([^"]+)/gi;
+
+function parse_name (input_string) {
+	let match;
+	while ((match = regex_name.exec(input_string)) !== null) {
+		console.log('found:' + match[1]);
+	}
 }
