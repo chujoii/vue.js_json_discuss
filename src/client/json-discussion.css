@@ -8,19 +8,41 @@
 
 #drop_zone:hover { outline-width: 10px; }
 
+ul {
+	width: 164px;
+	margin: 0px;
+	padding: 0px;
+	display:table;
+	height: 180px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+li {
+	display:table-row;
+	list-style-type: none;
+}
+
 #app-ul {
 	width:200px;
-	height: 100px;
+	height: 180px;
+}
+
+#users {
+	height: 180px;
+	border:1px dotted black;
 }
 
 #user_list {
-         float:left;
+	float:left;
+	height: 180px;
 }
 
 #fake_scroll_bar {
 	position: relative;
 	width:  34px;
-	height: 100px;
+	height: 100%;
 	float: right;
 	background: darkgrey;
 }
