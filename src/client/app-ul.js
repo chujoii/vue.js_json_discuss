@@ -18,7 +18,8 @@ var appul = new Vue({
 	},
 	methods: {
 		delete_user: function (index) {
-			this.db.splice(index, 1);
+			this.db.splice(index + this.db_pointer, 1);
+			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
 		},
 		scroll_up: function () {
 			if (0 < this.db_pointer) {
