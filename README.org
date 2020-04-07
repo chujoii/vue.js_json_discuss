@@ -12,7 +12,7 @@ JSON discussion registry Vue.js JavaScript
 
 * Description:
 Single-page application writen with Vue.js for demonstrate parsing
-dropped JSON files
+dropped JSON files and tests for performance
 
 * Usage:
 View in browser with JavaScript support.

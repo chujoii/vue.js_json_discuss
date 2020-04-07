@@ -7,3 +7,52 @@
 }
 
 #drop_zone:hover { outline-width: 10px; }
+
+#app-ul {
+	width:200px;
+	height: 100px;
+}
+
+#user_list {
+         float:left;
+}
+
+#fake_scroll_bar {
+	position: relative;
+	width:  34px;
+	height: 100px;
+	float: right;
+	background: darkgrey;
+}
+
+.fsb_button {
+	width: 34px;
+	height: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	padding:0px;
+	margin:0px;
+	right: 0;
+	left: 0;
+	position: absolute;
+}
+
+#sb_up {
+	top: 0;
+}
+
+#sb_position {
+	width: 34px;
+	height: 20px;
+	border: none;
+	right: 0;
+	left: 0;
+	/* top: 25px; */
+	position: absolute;
+}
+
+#sb_down {
+	bottom: 0;
+}

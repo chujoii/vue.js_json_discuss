@@ -19,14 +19,19 @@
 				<p>Drag file to this Drop Zone</p>
 			</div>
 
-			<div v-if="seen_ul">
-				{{ file_name }}
-				<ul>
+			{{ file_name }}
+			<div id="users" v-if="seen_ul">
+				<ul id="user_list">
 					<li v-for="(item, index) in db">
 						{{ item }}
 						<button v-on:click="delete_user(index)">x</button>
 					</li>
 				</ul>
+				<div id="fake_scroll_bar">
+					<button class="fsb_button" id="sb_up" v-on:click="scroll_up()">^</button>
+					<button id="sb_position" v-bind:style="{ top: scroll_bar_position + 'px' }" v-on:click="scroll_bar()">K</button>
+					<button class="fsb_button" id="sb_down" v-on:click="scroll_down()">v</button>
+				</div>
 			</div>
 		</div>
 	</body>
