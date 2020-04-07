@@ -18,7 +18,9 @@ function dropHandler(ev) {
 				read.readAsText(file);
 				read.onloadend = function(){
 					appul.db = parse_name(read.result);
+					console.log("start sort ...");
 					appul.db.sort();
+					console.log("end sort");
 					appul.seen_dz = false;
 					appul.seen_ul = true;
 					appul.file_name = file.name;
@@ -59,5 +61,5 @@ function parse_name (input_string) {
 		//console.log('found:' + match[1]);
 	}
 	console.log("parse finish");
-	return db.filter( onlyUnique );
+	return db;
 }
