@@ -1,7 +1,8 @@
 "use strict";
 
-const max_scroll_bar_position = 60;
-const min_scroll_bar_position = 20;
+const num_displayed_elements = 5;
+const scroll_bar_height = 180;
+const scroll_bar_button_height = 20;
 
 var appul = new Vue({
 	el: '#app-ul',
@@ -10,6 +11,8 @@ var appul = new Vue({
 		seen_dz: true,
 		seen_ul: false,
 		db: [],
+		db_part: [],
+		db_pointer: 0,
 		scroll_bar_position: 40,
 		scroll_bar_step:1
 	},
@@ -18,12 +21,18 @@ var appul = new Vue({
 			this.db.splice(index, 1);
 		},
 		scroll_up: function () {
-			this.scroll_bar_position -= (min_scroll_bar_position < this.scroll_bar_position) ? this.scroll_bar_step : 0;
-			console.log ("up " + this.scroll_bar_position);
+			if (0 < this.db_pointer) {
+				this.db_pointer--;
+				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
+				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+			}
 		},
 		scroll_down: function () {
-			this.scroll_bar_position += (max_scroll_bar_position > this.scroll_bar_position) ? this.scroll_bar_step : 0;
-			console.log ("down " + this.scroll_bar_position);
+			if (this.db.length - num_displayed_elements > this.db_pointer) {
+				this.db_pointer++;
+				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
+				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+			}
 		},
 		scroll_bar: function () {
 			console.log("scroll_bar");
