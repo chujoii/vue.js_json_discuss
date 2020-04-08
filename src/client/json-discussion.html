@@ -28,9 +28,9 @@
 					</li>
 				</ul>
 				<div id="fake_scroll_bar">
-					<button class="fsb_button" id="sb_up" v-on:click="scroll_up()">^</button>
+					<button class="fsb_button" id="sb_up" v-on:click="scroll_move(-1)">^</button>
 					<button id="sb_position" v-bind:style="{ top: scroll_bar_position + 'px' }" v-on:click="scroll_bar()">K</button>
-					<button class="fsb_button" id="sb_down" v-on:click="scroll_down()">v</button>
+					<button class="fsb_button" id="sb_down" v-on:click="scroll_move(+1)">v</button>
 				</div>
 			</div>
 		</div>

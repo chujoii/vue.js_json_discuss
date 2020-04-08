@@ -39,24 +39,19 @@ var appul = new Vue({
 			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
 			return this.get_unique();
 		},
-		scroll_up: function () {
-			let new_pointer = this.db_pointer - num_displayed_elements;
-			if (new_pointer < 0) {
-				new_pointer = 0;
-			}
-			this.scroll_move(new_pointer);
-		},
-		scroll_down: function () {
-			let new_pointer = this.db_pointer + num_displayed_elements;
-			if (new_pointer > this.db.length - num_displayed_elements) {
-				new_pointer = this.db.length - num_displayed_elements
-			}
-			this.scroll_move(new_pointer);
-		},
 		scroll_bar: function () {
 			console.log("scroll_bar");
 		},
-		scroll_move: function (pointer) {
+		scroll_move: function (shift) {
+			let pointer = this.db_pointer + shift * num_displayed_elements;
+			if (pointer < 0) {
+				pointer = 0;
+			} else {
+				if (pointer > this.db.length - num_displayed_elements) {
+					pointer = this.db.length - num_displayed_elements
+				}
+			}
+
 			if (this.db_pointer !== pointer) {
 				this.db_pointer = pointer;
 				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
