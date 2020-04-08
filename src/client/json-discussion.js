@@ -26,6 +26,7 @@ function dropHandler(ev) {
 					appul.file_name = file.name;
 					appul.scroll_bar_position = scroll_bar_button_height;
 					appul.db_part = appul.db.slice(appul.db_pointer, num_displayed_elements);
+					appul.get_unique();
 					console.log("ready for render");
 				}
 			}
