@@ -24,7 +24,7 @@ var appul = new Vue({
 		get_unique: function () {
 			console.log("search uniq ...");
 			let uniq = this.db_part.filter( onlyUnique );
-			if (uniq.length === this.db.length) {console.log("return uniq"); return uniq;}
+			if (uniq.length === this.db.length - this.db_pointer) {console.log("return uniq"); return uniq;}
 			if (uniq.length === this.db_part.length) {console.log("return uniq"); return uniq;}
 
 			// found not equal elements
@@ -40,23 +40,32 @@ var appul = new Vue({
 			return this.get_unique();
 		},
 		scroll_up: function () {
-			if (0 < this.db_pointer) {
-				this.db_pointer -= num_displayed_elements;
-				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
-				this.get_unique();
-				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+			let new_pointer = this.db_pointer - num_displayed_elements;
+			if (new_pointer < 0) {
+				new_pointer = 0;
+			}
+			if (this.db_pointer !== new_pointer) {
+				this.db_pointer = new_pointer;
+				this.scroll_move();
 			}
 		},
 		scroll_down: function () {
-			if (this.db.length - num_displayed_elements > this.db_pointer) {
-				this.db_pointer += num_displayed_elements;
-				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
-				this.get_unique();
-				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+			let new_pointer = this.db_pointer + num_displayed_elements;
+			if (new_pointer > this.db.length - num_displayed_elements) {
+				new_pointer = this.db.length - num_displayed_elements
+			}
+			if (this.db_pointer !== new_pointer) {
+				this.db_pointer = new_pointer;
+				this.scroll_move();
 			}
 		},
 		scroll_bar: function () {
 			console.log("scroll_bar");
+		},
+		scroll_move: function () {
+			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
+			this.get_unique();
+			this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
 		}
 	}
 })
