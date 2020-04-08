@@ -51,7 +51,7 @@ function onlyUnique(value, index, self) {
 	return self.indexOf(value) === index;
 }
 
-const regex_name = /"user"\s*:\s*"([^"]+)/gi;
+const regex_name = /"user"\s*:\s*"((?:[^"\\]+|\\.)+)/gi;
 
 function parse_name (input_string) {
 	let db = [];
