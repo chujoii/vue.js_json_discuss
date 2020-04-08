@@ -44,12 +44,11 @@ var appul = new Vue({
 		},
 		scroll_move: function (shift) {
 			let pointer = this.db_pointer + shift * num_displayed_elements;
+			if (pointer > this.db.length - num_displayed_elements) {
+				pointer = this.db.length - num_displayed_elements; // subtraction can set pointer to negative value
+			}
 			if (pointer < 0) {
 				pointer = 0;
-			} else {
-				if (pointer > this.db.length - num_displayed_elements) {
-					pointer = this.db.length - num_displayed_elements
-				}
 			}
 
 			if (this.db_pointer !== pointer) {
