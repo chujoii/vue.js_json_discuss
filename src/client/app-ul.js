@@ -44,28 +44,25 @@ var appul = new Vue({
 			if (new_pointer < 0) {
 				new_pointer = 0;
 			}
-			if (this.db_pointer !== new_pointer) {
-				this.db_pointer = new_pointer;
-				this.scroll_move();
-			}
+			this.scroll_move(new_pointer);
 		},
 		scroll_down: function () {
 			let new_pointer = this.db_pointer + num_displayed_elements;
 			if (new_pointer > this.db.length - num_displayed_elements) {
 				new_pointer = this.db.length - num_displayed_elements
 			}
-			if (this.db_pointer !== new_pointer) {
-				this.db_pointer = new_pointer;
-				this.scroll_move();
-			}
+			this.scroll_move(new_pointer);
 		},
 		scroll_bar: function () {
 			console.log("scroll_bar");
 		},
-		scroll_move: function () {
-			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
-			this.get_unique();
-			this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+		scroll_move: function (pointer) {
+			if (this.db_pointer !== pointer) {
+				this.db_pointer = pointer;
+				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
+				this.get_unique();
+				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
+			}
 		}
 	}
 })
