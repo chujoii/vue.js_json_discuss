@@ -55,15 +55,13 @@ function dragOverHandler(ev) {
 	ev.preventDefault();
 }
 
-const regex_name = /"user"\s*:\s*"((?:[^"\\]+|\\.)+)/gi;
-
 function parse_name (input_string) {
+	const regex_name = /"user"\s*:\s*"((?:[^"\\]+|\\.)+)/gi;
 	let db = [];
 	let match;
 	console.log("parse start");
 	while ((match = regex_name.exec(input_string)) !== null) {
-		db.push(match[1]);
-		//console.log('found:' + match[1]);
+		db.push(match[1].replace(/\\"/g, '"')); // not need <<&quot;>> for <<">> with Vue.js
 	}
 	console.log("parse finish");
 	return db;
