@@ -47,10 +47,6 @@ function dragOverHandler(ev) {
 	ev.preventDefault();
 }
 
-function onlyUnique(value, index, self) {
-	return self.indexOf(value) === index;
-}
-
 const regex_name = /"user"\s*:\s*"((?:[^"\\]+|\\.)+)/gi;
 
 function parse_name (input_string) {

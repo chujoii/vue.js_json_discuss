@@ -22,22 +22,33 @@ var appul = new Vue({
 			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
 		},
 		get_unique: function () {
-			console.log("search uniq ...");
-			let uniq = this.db_part.filter( onlyUnique );
-			if (uniq.length === this.db.length - this.db_pointer) {console.log("return uniq"); return uniq;}
-			if (uniq.length === this.db_part.length) {console.log("return uniq"); return uniq;}
+			let changes = false;
+			console.log("start search uniq ...");
+			let i = this.db_pointer;
+			let j = i + 1;
+			let constrain_j;
 
-			// found not equal elements
-			console.log(this.db);
-			console.log(this.db_part);
-			console.log(uniq);
-			console.log("delete ununique  from" + (this.db_pointer + uniq.length) + "   num" +  (num_displayed_elements - uniq.length));
-			this.db.splice(this.db_pointer + uniq.length, num_displayed_elements - uniq.length);
-			for (let i=0; i<uniq.length; i++) {
-				this.db[this.db_pointer + i] = uniq[i]; // fixme: this element already exist in db, but in unknown places
+			while (i < this.db.length - 1 && i < this.db_pointer + num_displayed_elements && j < this.db.length) {
+				if (j==i) { j++; }
+				if (this.db[i] === this.db[j]) {
+					while (j<this.db.length && this.db[i] === this.db[j]) {
+						j++;
+						changes = true;
+					}
+					constrain_j = (j<this.db.length-1) ? j : this.db.length - 1;
+					if (this.db[i] < this.db[constrain_j]) { // < or !==
+						this.db[i+1] = this.db[constrain_j];
+						changes = true;
+					}
+				}
+				i++;
+			}
+
+			if (changes) {
+				this.db.splice(i, j-i);
 			}
 			this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
-			return this.get_unique();
+			console.log("stop search uniq ...");
 		},
 		scroll_bar: function () {
 			console.log("scroll_bar");
