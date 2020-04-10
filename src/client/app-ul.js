@@ -3,6 +3,7 @@
 const num_displayed_elements = 5;
 const scroll_bar_height = 180;
 const scroll_bar_button_height = 20;
+let bench_time;
 
 var appul = new Vue({
 	el: '#app-ul',
@@ -54,6 +55,9 @@ var appul = new Vue({
 			console.log("scroll_bar");
 		},
 		scroll_move: function (shift) {
+			bench_time = Date.now();
+			console.log('benchmark: scroll button pressed!');
+
 			let pointer = this.db_pointer + shift * num_displayed_elements;
 			if (pointer > this.db.length - num_displayed_elements) {
 				pointer = this.db.length - num_displayed_elements; // subtraction can set pointer to negative value
@@ -65,9 +69,12 @@ var appul = new Vue({
 			if (this.db_pointer !== pointer) {
 				this.db_pointer = pointer;
 				this.db_part = this.db.slice(this.db_pointer, this.db_pointer + num_displayed_elements);
+				bench('copy to db_part: ');
 				this.get_unique();
+				bench('leave only unique in db_part: ');
 				this.scroll_bar_position = scroll_bar_button_height + (scroll_bar_height - 3*scroll_bar_button_height) * this.db_pointer / (this.db.length - num_displayed_elements);
 			}
+			bench('render time?: ');
 		}
 	}
 })
