@@ -16,7 +16,7 @@
 			     ondragover="dragOverHandler(event);"
 			     v-if="seen_dz"
 			     >
-				<p>Drag file to this Drop Zone</p>
+				<p>Drag JSON file to this Drop Zone</p>
 			</div>
 
 			{{ file_name }}
@@ -24,7 +24,7 @@
 				<ul id="user_list">
 					<li v-for="(item, index) in db_part">
 						{{ item }}
-						<button v-on:click="delete_user(index)">x</button>
+						<button class="del_button" v-on:click="delete_user(index)">x</button>
 					</li>
 				</ul>
 				<div id="fake_scroll_bar">

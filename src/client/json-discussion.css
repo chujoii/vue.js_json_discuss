@@ -4,6 +4,7 @@
 	outline: dashed;
 	transition: outline 0.6s linear;
 	margin: 0.5em; /* Increased margin since the outline expands outside the element */
+	background: white;
 }
 
 #drop_zone:hover { outline-width: 10px; }
@@ -27,16 +28,23 @@ li {
 #app-ul {
 	width:200px;
 	height: 180px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #users {
 	height: 180px;
 	border:1px dotted black;
+	background: white;
 }
 
 #user_list {
 	float:left;
 	height: 180px;
+}
+
+.del_button {
+	float: right;
 }
 
 #fake_scroll_bar {
